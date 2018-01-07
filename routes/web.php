@@ -35,3 +35,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function ()
     Route::post('/admin/edit', 'Admin\AdminController@editPost');  //新建或编辑管理员
 
 });
+
+//微信相关
+Route::any('/wechat', 'Admin\WeChatController@serve');
