@@ -19,6 +19,8 @@ class TestController extends Controller
 {
     public function test(Request $request)
     {
+        dd(storage_path());
+
         $requestValidationResult = RequestValidator::validator($request->all(), [
             'test' => 'required',
         ]);

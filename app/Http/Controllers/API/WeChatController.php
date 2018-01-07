@@ -11,20 +11,22 @@ namespace App\Http\Controllers\API;
 use App\Components\TestManager;
 use App\Http\Controllers\ApiResponse;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Logging\Log;
 use Illuminate\Http\Request;
 use App\Components\RequestValidator;
 
 
 class WeChatController extends Controller
 {
-    public function server(Request $request)
+    public function server()
     {
-        Log::info('wechat request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
-        $app = app('wechat.official_account');
-        $app->server->push(function ($message) {
+        Log::info('request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
+        $wechat = app('wechat');
+        $wechat->server->setMessageHandler(function ($message) {
             return "欢迎关注 overtrue！";
-        });
 
-        return $app->server->serve();
+        });
+        Log::info('return response.');
+        return $wechat->server->serve();
     }
 }
