@@ -179,6 +179,11 @@ return [
 
         Mpociot\ApiDoc\ApiDocGeneratorServiceProvider::class,
 
+        /*
+         * 微信easywebChat
+         */
+        Overtrue\LaravelWeChat\ServiceProvider::class,
+
     ],
 
     /*
@@ -227,6 +232,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'EasyWeChat' => Overtrue\LaravelWeChat\Facade::class,   //微信公众平台
 
     ],
 

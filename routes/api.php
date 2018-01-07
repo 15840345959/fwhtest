@@ -40,3 +40,6 @@ Route::group(['prefix' => '', 'middleware' => ['BeforeRequest']], function () {
     Route::post('user/encryptedData', 'API\UserController@encryptedData');
 
 });
+
+//微信相关
+Route::any('/wechat', 'WeChatController@serve');
