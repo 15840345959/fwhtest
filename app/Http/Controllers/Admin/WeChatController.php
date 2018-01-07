@@ -12,7 +12,7 @@ namespace App\Http\Controllers\Admin;
 use Log;
 
 
-class WeChatController extends Controller
+class WeChatController
 {
     /**
      * 处理微信的请求消息
@@ -30,5 +30,4 @@ class WeChatController extends Controller
 
         return $app->server->serve();
     }
-
 }
