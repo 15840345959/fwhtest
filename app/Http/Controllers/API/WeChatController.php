@@ -11,7 +11,7 @@ namespace App\Http\Controllers\API;
 use App\Components\TestManager;
 use App\Http\Controllers\ApiResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Logging\Log;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Components\RequestValidator;
 
