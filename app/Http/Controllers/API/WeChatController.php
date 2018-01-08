@@ -64,19 +64,25 @@ class WeChatController extends Controller
 
 
     //发送模板消息
-//    public function sendTemplateMessage()
-//    {
-//        $app = app('wechat.official_account');
-//
-//        $app->template_message->send([
-//            'touser' => '',
-//            'template_id' => 'template-id',
-//            'url' => 'https://easywechat.org',
-//            'data' => [
-//                'key1' => 'VALUE',
-//                'key2' => 'VALUE2'
-//            ],
-//        ]);
-//    }
+    public function sendTemplateMessage()
+    {
+        $app = app('wechat.official_account');
+
+        $app->template_message->send([
+            'touser' => 'onrxSszCPDlGBJanfjURTQHMIamE',
+            'template_id' => 'IuMgI8WdRtLe4bOPLzwQlFjuaAcAK8hDp2yWwq0DCGc',
+            'url' => 'https://easywechat.org',
+            'data' => [
+                'first' => '测试消息',
+                'keyword1' => '测试消息',
+                'keyword2' => '测试消息',
+                'keyword3' => '测试消息',
+                'keyword4' => '测试消息',
+                'remark' => '请注意预约时间'
+            ],
+        ]);
+        $response = $app->server->serve();
+        return $response;
+    }
 
 }
