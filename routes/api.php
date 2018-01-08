@@ -44,3 +44,4 @@ Route::group(['prefix' => '', 'middleware' => ['BeforeRequest']], function () {
 //微信相关
 Route::any('/wechat', 'API\WeChatController@serve');
 Route::any('/wechat/sendTemplateMessage', 'API\WeChatController@sendTemplateMessage');
+Route::any('/wechat/getUserInfo', 'API\WeChatController@getUserInfo');

@@ -30,6 +30,8 @@ class WeChatController extends Controller
         $app = app('wechat.official_account');
         $app->server->push(function ($message) {
 
+            Log::info("user openid:" + $message['openid']);
+
             switch ($message['MsgType']) {
                 case 'event':
                     return '收到事件消息';
@@ -85,4 +87,14 @@ class WeChatController extends Controller
         return $response;
     }
 
+
+    //根据openid获取unionid
+    public function getUserInfo()
+    {
+        $app = app('wechat.official_account');
+        $user = $app->user->get("onrxSszCPDlGBJanfjURTQHMIamE");
+
+        return ApiResponse::makeResponse(true, $user, ApiResponse::SUCCESS_CODE);
+
+    }
 }
