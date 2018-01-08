@@ -30,7 +30,7 @@ class WeChatController extends Controller
         $app = app('wechat.official_account');
         $app->server->push(function ($message) {
 
-            Log::info("user openid:" + $message['openid']);
+            Log::info(\GuzzleHttp\json_encode($message));
 
             switch ($message['MsgType']) {
                 case 'event':
