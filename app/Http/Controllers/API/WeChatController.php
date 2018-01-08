@@ -11,9 +11,9 @@ namespace App\Http\Controllers\API;
 use App\Components\TestManager;
 use App\Http\Controllers\ApiResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Components\RequestValidator;
+use Illuminate\Support\Facades\Log;
 
 
 class WeChatController extends Controller
@@ -29,6 +29,7 @@ class WeChatController extends Controller
 
         $app = app('wechat.official_account');
         $app->server->push(function ($message) {
+
             switch ($message['MsgType']) {
                 case 'event':
                     return '收到事件消息';
@@ -57,8 +58,25 @@ class WeChatController extends Controller
                     break;
             }
         });
-
         $response = $app->server->serve();
         return $response;
     }
+
+
+    //发送模板消息
+//    public function sendTemplateMessage()
+//    {
+//        $app = app('wechat.official_account');
+//
+//        $app->template_message->send([
+//            'touser' => '',
+//            'template_id' => 'template-id',
+//            'url' => 'https://easywechat.org',
+//            'data' => [
+//                'key1' => 'VALUE',
+//                'key2' => 'VALUE2'
+//            ],
+//        ]);
+//    }
+
 }
