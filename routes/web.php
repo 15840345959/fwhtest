@@ -21,7 +21,7 @@ Route::group(['prefix' => '', 'middleware' => []], function () {
     //首页
     Route::get('/index', 'Web\IndexController@index');       //首页
     //web登录回调
-    Route::get('/webLogin', 'Web\IndexController@webLogin');       //首页
+    Route::any('/webLogin', 'Web\IndexController@webLogin');       //首页
 
 
 });
