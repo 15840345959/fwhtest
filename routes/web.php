@@ -12,29 +12,16 @@
 */
 
 
+Route::get('/', 'Web\IndexController@index');       //首页
+
 //登录
 
-Route::get('/admin/login', 'Admin\LoginController@login');        //登录
-Route::post('/admin/login', 'Admin\LoginController@loginPost');   //post登录请求
-Route::get('/admin/loginout', 'Admin\LoginController@loginout');  //注销
-
-Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function () {
+Route::group(['prefix' => '', 'middleware' => []], function () {
 
     //首页
-    Route::get('/', 'Admin\IndexController@index');       //首页
-    Route::get('/index', 'Admin\IndexController@index');  //首页
-    Route::get('/dashboard/index', 'Admin\IndexController@index');    //首页
+    Route::get('/index', 'Web\IndexController@index');       //首页
+    //web登录回调
+    Route::get('/webLogin', 'Web\IndexController@webLogin');       //首页
 
-    //错误页面
-    Route::get('/error/500', 'Admin\IndexController@error');  //错误页面
-
-    //管理员管理
-    Route::get('/admin/index', 'Admin\AdminController@index');  //管理员管理首页
-    Route::get('/admin/del/{id}', 'Admin\AdminController@del');  //删除管理员
-    Route::get('/admin/edit', 'Admin\AdminController@edit');  //新建或编辑管理员
-    Route::post('/admin/edit', 'Admin\AdminController@editPost');  //新建或编辑管理员
 
 });
-
-//微信相关
-Route::any('/wechat', 'Admin\WeChatController@serve');
