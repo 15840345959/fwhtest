@@ -27,7 +27,7 @@ class IndexController
     {
 //        dd($request->all());
         $app = app('wechat.official_account');
-        $wx_config = $app->jssdk->buildConfig(array('onMenuShareQQ', 'onMenuShareWeibo'), true);
+        $wx_config = $app->jssdk->buildConfig(array('onMenuShareTimeline', 'onMenuShareQQ', 'onMenuShareWeibo'), true);
 
 //        dd($wx_config);
 
