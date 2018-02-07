@@ -23,10 +23,31 @@ class IndexController
 {
 
     //首页
-    public function index(Request $request)
+    public function wxPage(Request $request)
     {
 //        dd($request->all());
-        return view('web.index.index', []);
+        $app = app('wechat.official_account');
+        $wx_config = $app->jssdk->buildConfig(array('onMenuShareQQ', 'onMenuShareWeibo'), true);
+        return view('wxPage.index.index', ['wx_config' => $wx_config]);
+    }
+
+    /*
+     * 第三方微信登录接口
+     *
+     *
+     */
+    public function webLogin()
+    {
+        Log::info('webLogin request arrived.'); # 注意：Log 为 Laravel 组件，所以它记的日志去 Laravel 日志看，而不是 EasyWeChat 日志
+
+        $app = app('wechat.open_platform');
+
+        $app->server->push(function ($message) {
+            Log::info(\GuzzleHttp\json_encode($message));
+            return "web登录！";
+        });
+
+        return view('web.my.index', []);
     }
 
 }

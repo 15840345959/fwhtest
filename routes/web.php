@@ -14,6 +14,8 @@
 
 Route::get('/', 'Web\IndexController@index');       //首页
 
+Route::get('/wxPage', 'Web\IndexController@wxPage');       //微信授权
+
 //登录
 
 Route::group(['prefix' => '', 'middleware' => []], function () {
@@ -22,6 +24,5 @@ Route::group(['prefix' => '', 'middleware' => []], function () {
     Route::get('/index', 'Web\IndexController@index');       //首页
     //web登录回调
     Route::any('/webLogin', 'Web\IndexController@webLogin');       //首页
-
 
 });
