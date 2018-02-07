@@ -29,7 +29,7 @@ class IndexController
         $app = app('wechat.official_account');
         $wx_config = $app->jssdk->buildConfig(array('onMenuShareQQ', 'onMenuShareWeibo'), true);
 
-        dd($wx_config);
+//        dd($wx_config);
 
         return view('wxPage.index.index', ['wx_config' => $wx_config]);
     }
