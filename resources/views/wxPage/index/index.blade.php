@@ -14,7 +14,7 @@
 </html>
 <script type="text/javascript" charset="utf-8">
 
-    wx.config({{$wx_config}});
+    wx.config({!! $wx_config !!});
 
 
     //微信相关
