@@ -12,7 +12,9 @@
 */
 
 
-Route::get('/', 'Web\IndexController@index');       //首页
+Route::get('/', function () {
+    return response()->download(realpath(base_path('app')) . '/MP_verify_u8o0o6vDsLXCjpty.txt', 'MP_verify_u8o0o6vDsLXCjpty.txt');
+});
 
 Route::get('/wxPage', 'Web\IndexController@wxPage');       //微信授权
 
