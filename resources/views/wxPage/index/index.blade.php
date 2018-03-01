@@ -27,7 +27,7 @@
         wx.onMenuShareTimeline({
             title: '分享标题', // 分享标题
             link: 'http://fwhTest.isart.me/wxPage', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'http://osc6vvb9q.bkt.clouddn.com/2017107135228260789214.jpg', // 分享图标
+            imgUrl: 'http://dsyy.isart.me/app.png', // 分享图标
             success: function (ret) {
                 // 用户确认分享后执行的回调函数
                 console.log("success ret:" + JSON.stringify(ret))
@@ -36,7 +36,6 @@
                 // 用户取消分享后执行的回调函数
             }
         });
-
     });
 
     function clickShare() {

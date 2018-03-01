@@ -9,14 +9,10 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Components\ADManager;
-use App\Components\QNManager;
-use App\Libs\CommonUtils;
-use App\Models\AD;
+use App\Components\Utils;
 use Illuminate\Http\Request;
-use App\Libs\ServerUtils;
-use App\Components\RequestValidator;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cookie;
 
 
 class IndexController
@@ -53,4 +49,43 @@ class IndexController
         return view('web.my.index', []);
     }
 
+    /*
+     * 网页授权
+     *
+     * By TerryQi
+     *
+     * 2018-02-23
+     *
+     */
+    public function webAuth(Request $request)
+    {
+
+    }
+
+
+    /*
+     * 测试cookie
+     *
+     * By TerryQI
+     *
+     * 2018-02-23
+     */
+    public function testCookie(Request $request)
+    {
+
+        $user = $request->cookie('user');
+
+        if (Utils::isObjNull($user)) {
+
+            $user = Cookie::make('user', 'TerryQi', 30);
+            Response::make()->withCookie($user);
+
+//            dd("cookie is null");
+//            $user = Cookie::forever('user', 'TerryQi');
+////            Response::make()->withCookie($user);
+//            response()->withCookie($user);
+//            dd("has set cookie");
+        }
+        dd($user);
+    }
 }

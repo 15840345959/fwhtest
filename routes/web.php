@@ -24,7 +24,24 @@ Route::group(['prefix' => '', 'middleware' => []], function () {
 
     //首页
     Route::get('/index', 'Web\IndexController@index');       //首页
+
+    //设置cookie
+    Route::get('/cookie', 'Web\IndexController@testCookie');       //cookie测试
+
     //web登录回调
     Route::any('/webLogin', 'Web\IndexController@webLogin');       //首页
+
+    //网页授权
+    Route::get('/webAuth', 'Web\IndexController@webAuth');
+
+    Route::get('cookieset', function () {
+        $user_info = array('name' => 'good', 'age' => 12);
+        $user = Cookie::make('user', $user_info, 30);
+        return Response::make()->withCookie($user);
+    });
+
+    Route::get('cookietest', function () {
+        dd(Cookie::get('user'));
+    });
 
 });
