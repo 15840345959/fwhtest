@@ -45,5 +45,6 @@ Route::group(['prefix' => '', 'middleware' => ['BeforeRequest']], function () {
 Route::any('/wechat', 'API\WeChatController@serve');
 Route::any('/wechat/sendTemplateMessage', 'API\WeChatController@sendTemplateMessage');
 Route::any('/wechat/getUserInfo', 'API\WeChatController@getUserInfo');
+Route::any('/webchat/setMenu', 'API\WeChatController@setMenu');
 
 Route::any('/wechat/webLogin', 'API\WeChatController@webLogin');
